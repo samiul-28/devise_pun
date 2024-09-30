@@ -1,0 +1,25 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Shops" %>
+<%= link_to "Add New shop", new_shop_path %><br>
+<% if signed_in? %>
+  <%= link_to 'Log Out', destroy_user_session_path, method: :delete %>
+ <% else %>
+  <%= link_to 'Log In', new_user_session_path %>
+  <%= link_to 'Sign Up', new_user_registration_path %>
+<% end %>
+<hr>
+<div>
+  <h1>All Shops</h1>
+
+  <div id="shops">
+    <% @shops.each do |shop| %>
+      <%= render shop %>
+      <p>
+        <%= link_to "Show this shop", shop %>
+      </p>
+    <% end %>
+  </div>
+</div>
+
+
